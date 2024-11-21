@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+// src/App.js
+import React, { useState } from 'react';
 import './App.css';
+import QuizApp from './components/QuizApp';
+import DictionaryApp from './components/DictionaryApp';
+import ProgressTracker from './components/ProgressTracker';
 
 function App() {
+  const [progress, setProgress] = useState(0);
+
+  const handleCorrectAnswer = () => {
+    setProgress((prevProgress) => Math.min(prevProgress + 10, 100)); // increments by 10% for each correct answer
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Learning Hub Dashboard</h1>
+      <ProgressTracker progress={progress} />
+      <QuizApp onCorrectAnswer={handleCorrectAnswer} />
+      <DictionaryApp />
     </div>
   );
 }

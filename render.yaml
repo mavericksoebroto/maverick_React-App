@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: learning-hub-dashboard
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    runtime: node
+    nodeVersion: 16
+    
